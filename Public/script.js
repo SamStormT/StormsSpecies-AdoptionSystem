@@ -6,11 +6,14 @@ const ADMIN_PASSWORD = "admin123";
 let allPets = []; // holds the full pet list so we can filter it client-side
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    // Admin Login Handling: only runs if we're on admin.html
     const loginScreen = document.getElementById("login-screen");
     const adminContent = document.getElementById("admin-content");
     const loginForm = document.getElementById("login-form");
 
     if (loginScreen && adminContent && loginForm) {
+        // If already logged in this session, skip straight to the dashboard
         if (sessionStorage.getItem("isAdminAuthenticated") === "true") {
             loginScreen.style.display = "none";
             adminContent.style.display = "block";
@@ -41,18 +44,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // Only load admin requests table rows if we are on admin.html
     if (document.getElementById("requests-table-body")) {
         loadRequests();
     }
 
+    // Only load the admin "Manage Pets" table if we are on admin.html
     if (document.getElementById("pets-table-body")) {
         loadAdminPets();
     }
 
+    // Only load the grid cards if we are on index.html
     if (document.getElementById("pets-container")) {
         loadPets();
     }
 
+    // Species dropdown filter on index.html
     const speciesSearch = document.getElementById("species-search");
     if (speciesSearch) {
         speciesSearch.addEventListener("change", () => {
@@ -68,20 +75,24 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Handle dynamic pet details filling on AdoptionForm.html
     const animalNameField = document.getElementById("ANIMALNAME");
     if (animalNameField) {
         const urlParams = new URLSearchParams(window.location.search);
         const petIdFromUrl = urlParams.get('petId');
 
         if (petIdFromUrl) {
+            // Save the selected ID into our hidden input field
             const petIdInput = document.getElementById("PETID");
             if (petIdInput) petIdInput.value = petIdFromUrl;
 
+            // Fetch the pet list to match the ID and grab their string name cleanly
             fetch(PETS_URL)
                 .then(res => res.json())
                 .then(petsArray => {
                     console.log("Database records received from server:", petsArray);
 
+                    // Case-insensitive database row matching checks
                     const clickedPet = petsArray.find(pet => {
                         const currentId = pet.PetId || pet.petId || pet.PETID;
                         return currentId == petIdFromUrl;
@@ -97,11 +108,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // Handles the adoption form submission safely inside the load window
     const adoptionForm = document.getElementById("adoption-form");
     if (adoptionForm) {
         adoptionForm.addEventListener("submit", async (e) => {
             e.preventDefault();
 
+            // Pull properties from input fields
             const PetId = document.getElementById("PETID").value.trim();
             const Name = document.getElementById("NAME").value.trim();
             const Surname = document.getElementById("SURNAME").value.trim();
@@ -117,8 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
             try {
                 const response = await fetch(API_URL, {
                     method: "POST",
-                    // ❌ Big error: wrong header key
-                    headers: { "Content_Type": "application/json" },
+                    headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ PetId, Name, Surname, City, Email, Phone })
                 });
 
@@ -141,6 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Handles uploading a new pet directly from admin.html form fields
     const petForm = document.getElementById("pet-upload-form");
     if (petForm) {
         petForm.addEventListener("submit", async (e) => {
@@ -180,6 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const result = await response.json();
 
                 if (!response.ok) {
+                    // Covers the duplicate-pet 409 response as well as other errors
                     alert(`Upload Error: ${result.error || 'Unknown error occurred'}`);
                     return;
                 }
@@ -194,6 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (document.getElementById("pets-table-body")) {
                     loadAdminPets();
                 }
+
             } catch (err) {
                 console.error("Failed uploading pet profile record:", err);
                 alert("Could not upload pet profile. Make sure your server is running.");
@@ -215,6 +230,7 @@ async function loadRequests() {
 
         const requests = await response.json();
         const tbody = document.getElementById("requests-table-body");
+
         if (!tbody) return;
         tbody.innerHTML = "";
 
@@ -258,7 +274,7 @@ async function updateRequest(id, newStatus) {
 
         const result = await response.json();
 
-                if (!response.ok) {
+        if (!response.ok) {
             console.error(`Error updating request ID ${id}:`, result);
             alert(`Error updating request: ${result.message || result.error || 'Unknown error'}`);
             return;
@@ -266,6 +282,7 @@ async function updateRequest(id, newStatus) {
 
         alert(result.message || `Request ${id} updated to ${newStatus}`);
         loadRequests();
+        // The pet's availability may have changed (approved, or reverted from approved) - refresh the pets table too
         if (document.getElementById("pets-table-body")) {
             loadAdminPets();
         }
@@ -297,6 +314,7 @@ async function deleteRequest(id) {
     }
 }
 
+// Loads the "Manage Pets" table on admin.html and wires up Delete buttons
 async function loadAdminPets() {
     try {
         const response = await fetch(PETS_URL);
@@ -387,6 +405,12 @@ async function loadPets() {
     }
 }
 
+// Builds the pet cards for whatever array of pets is passed in
+// (used both for the initial full list and for filtered dropdown results)
+// Button states:
+//  - Not Available (adopted)               -> "Adopted" label
+//  - Available but has a Pending request    -> disabled "Pending" button
+//  - Available with no pending request      -> clickable "Adopt" button
 function renderPets(pets) {
     const container = document.getElementById("pets-container");
     if (!container) return;
