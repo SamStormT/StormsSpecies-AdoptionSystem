@@ -1,7 +1,7 @@
 const API_URL = "http://localhost:3000/api/adoptions";
 const PETS_URL = "http://localhost:3000/api/pets";
 
-const ADMIN_PASSWORD = "";
+const ADMIN_PASSWORD ="admin123";
 
 let allPets = []; // holds the full pet list so we can filter it client-side
 
