@@ -1,4 +1,3 @@
-/* Universal Base Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -25,7 +24,7 @@ main {
     padding: 0 20px;
 }
 
-/*  Pet Cards Gallery Layout (index.html) 🐾 */
+/* Pet Cards Gallery Layout (index.html)  */
 #pets-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -49,9 +48,9 @@ main {
     border-radius: 4px;
 }
 
-/* 📝 Forms Layout (AdoptionForm.html & admin.html) 📝 */
+/* Forms Layout (AdoptionForm.html & admin.html) */
 .form-container, .add-pet-section {
-    background: orange;
+    background: #fff;
     max-width: 500px;
     margin: 30px auto;
     padding: 25px;
@@ -95,7 +94,7 @@ main {
     margin-top: 5px;
 }
 
-/*  Admin Dashboard Applications Grid (admin.html) 📊 */
+/* Admin Dashboard Applications Grid (admin.html) */
 .admin-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -105,7 +104,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 30px;
-    background: pink;
+    background: #fff;
 }
 
 th, td {
@@ -138,14 +137,14 @@ button.approve { background-color: #4CAF50; color: white; margin-right: 5px; }
 button.deny { background-color: #ff9800; color: white; margin-right: 5px; }
 button.delete { background-color: #f44336; color: white; }
 
-/*  Pending adoption button (disabled state on index.html cards) */
+/* Pending adoption button (disabled state on index.html cards) */
 button.pending-btn {
     background-color: #999;
     color: white;
     cursor: not-allowed;
 }
 
-/*  "Adopted" label shown on index.html cards once a pet is no longer available */
+/* "Adopted" label shown on index.html cards once a pet is no longer available */
 .adopted-label {
     display: inline-block;
     font-weight: bold;
@@ -153,7 +152,7 @@ button.pending-btn {
     margin-top: 8px;
 }
 
-/*  Thumbnail image used in the admin "Manage Pets" table */
+/* Thumbnail image used in the admin "Manage Pets" table */
 .admin-pet-thumb {
     width: 60px;
     height: 60px;
@@ -165,7 +164,7 @@ button:hover, .submit-pet-btn:hover { opacity: 0.9; }
 .cancel-link, .nav-link { text-align: center; margin-top: 15px; }
 .cancel-link a, .nav-link a { text-decoration: none; color: #008CBA; font-weight: bold; }
 
-/*  Species Search Dropdown (index.html) */
+/* Species Search Dropdown (index.html) */
 .search-bar {
     max-width: 400px;
     margin: 0 auto 20px auto;
@@ -182,13 +181,13 @@ button:hover, .submit-pet-btn:hover { opacity: 0.9; }
     width: 100%;
     padding: 10px;
     font-size: 1rem;
-    border: 1px solid pink;
+    border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    background-color: yellowgreen;
+    background-color: #fff;
 }
 
-/*  Admin Login Screen (admin.html) */
+/* Admin Login Screen (admin.html) */
 #login-screen {
     display: flex;
     justify-content: center;
@@ -197,7 +196,7 @@ button:hover, .submit-pet-btn:hover { opacity: 0.9; }
 }
 
 .login-box {
-    background: pink;
+    background: #fff;
     max-width: 350px;
     width: 100%;
     padding: 25px;
@@ -212,13 +211,13 @@ button:hover, .submit-pet-btn:hover { opacity: 0.9; }
 
 .login-box button {
     width: 100%;
-    background-color: pink;
+    background-color: #008CBA;
     color: white;
     margin-top: 5px;
 }
 
 #login-error {
-    color: yellow;
+    color: #f44336;
     display: none;
     margin-top: 10px;
     font-weight: bold;
