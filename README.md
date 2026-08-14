@@ -1,9 +1,3 @@
-Yes — your README is already solid, but it would benefit from a few **updates to reflect the tools and libraries you’ve actually used**. Right now, it doesn’t mention things like `body‑parser`, the Browser APIs (Fetch, FileReader, sessionStorage, URLSearchParams), or Render (for deployment). Including those makes your documentation more accurate and professional, and it shows examiners/collaborators that you’ve thought about the full stack.
-
-Here’s how your **updated README** could look with those additions folded in:
-
----
-
 # Storm’s Species 🐾
 
 ## Overview
