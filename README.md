@@ -1,3 +1,9 @@
+Yes — your README is already solid, but it would benefit from a few **updates to reflect the tools and libraries you’ve actually used**. Right now, it doesn’t mention things like `body‑parser`, the Browser APIs (Fetch, FileReader, sessionStorage, URLSearchParams), or Render (for deployment). Including those makes your documentation more accurate and professional, and it shows examiners/collaborators that you’ve thought about the full stack.
+
+Here’s how your **updated README** could look with those additions folded in:
+
+---
+
 # Storm’s Species 🐾
 
 ## Overview
@@ -11,10 +17,10 @@ Every year, countless stray animals are left without food or shelter. Many are u
 ---
 
 ## Goals & Objectives
-- Provide a **user-friendly website** for browsing adoptable pets.
-- Allow users to **submit adoption applications** online.
-- Enable admins to **manage pets and requests** (approve, deny, delete).
-- Reduce the number of strays and shelter euthanasia cases.
+- Provide a user‑friendly website for browsing adoptable pets.  
+- Allow users to submit adoption applications online.  
+- Enable admins to manage pets and requests (approve, deny, delete).  
+- Reduce the number of strays and shelter euthanasia cases.  
 
 ---
 
@@ -27,30 +33,40 @@ Every year, countless stray animals are left without food or shelter. Many are u
 ---
 
 ## Tech Stack
+
 ### Languages
 - HTML5  
 - CSS3  
 - JavaScript (Frontend)  
 - Node.js (Backend)  
-- SQL (SQLite3 queries)
+- SQL (SQLite3 queries)  
 
 ### Libraries & Frameworks
-- [Express.js](https://expressjs.com/) – REST API routing  
-- [CORS](https://www.npmjs.com/package/cors) – Secure cross-origin requests  
-- [SQLite3](https://www.npmjs.com/package/sqlite3) – Lightweight database engine  
+- Express.js – REST API routing  
+- CORS – Secure cross‑origin requests  
+- SQLite3 – Lightweight database engine  
+- body‑parser – Middleware for parsing JSON request bodies  
+
+### Browser APIs
+- Fetch API – for backend communication  
+- FileReader API – for Base64 image encoding  
+- sessionStorage – for client‑side authentication persistence  
+- URLSearchParams – for parsing query parameters  
 
 ### Tools
-- Visual Studio Code  
-- npm (Node Package Manager)  
-- GitHub (Version Control & Deployment)  
+- Visual Studio Code – IDE for coding and debugging  
+- npm – Node Package Manager for installing dependencies  
+- GitHub – Version control and project hosting  
+- Render – Deployment and hosting platform  
+- Google Chrome – Browser for testing and debugging  
 
 ---
 
 ## Features
 - **Browse Pets:** Filter by species, view details, and adoption status.  
 - **Adoption Form:** Submit applications linked to specific pets.  
-- **Admin Dashboard:** Login with password `admin123`, manage pets, review and approve/deny requests.  
-- **Dynamic Updates:** Adoption status changes reflected in real-time.  
+- **Admin Dashboard:** Login with password, manage pets, review and approve/deny requests.  
+- **Dynamic Updates:** Adoption status changes reflected in real‑time.  
 - **Database Integration:** Persistent storage of pets and adoption requests.  
 
 ---
@@ -60,12 +76,12 @@ Every year, countless stray animals are left without food or shelter. Many are u
 |------|------|-------|---------------|
 | 1 | Requirements & Design (UML, DFD, schema) | Documentation | 1 week |
 | 2 | Frontend Development | HTML, CSS, JS | 2 weeks |
-| 3 | Backend Setup | Node.js, Express, CORS | 2 weeks |
+| 3 | Backend Setup | Node.js, Express, CORS, body‑parser | 2 weeks |
 | 4 | Database Implementation | SQLite3 | 1 week |
 | 5 | API Development | Express.js, SQLite3 | 2 weeks |
-| 6 | Integration | Fetch API | 1 week |
+| 6 | Integration | Fetch API, Browser APIs | 1 week |
 | 7 | Testing | Unit, Integration, Functional | 1 week |
-| 8 | Deployment | GitHub Pages, Node.js server | 1 week |
+| 8 | Deployment | Render, GitHub | 1 week |
 | 9 | Launch & Advertising | Social Media, SPCA partnership | Ongoing |
 
 ---
@@ -79,21 +95,22 @@ Every year, countless stray animals are left without food or shelter. Many are u
 
 ## Challenges & Risk Management
 - **Challenge:** Limited reach.  
-  - *Mitigation:* Social media advertising, SPCA partnerships.  
+  *Mitigation:* Social media advertising, SPCA partnerships.  
 - **Challenge:** Handling large image uploads.  
-  - *Mitigation:* Consider switching from Base64 to Multer for efficiency.  
+  *Mitigation:* Consider switching from Base64 to Multer for efficiency.  
 
 ---
 
 ## Deployment
-- **Frontend:** GitHub Pages  
-- **Backend:** Node.js server (local or hosted)  
-- **Database:** SQLite3 file-based storage  
+- **Frontend:** Render (hosting)  
+- **Backend:** Node.js server (hosted on Render)  
+- **Database:** SQLite3 file‑based storage  
+- **Version Control:** GitHub repository  
 
 ---
 
 ## License
-This project is licensed under the [Apache License 2.0](LICENSE) – you are free to use, modify, and distribute the code, provided that proper attribution is given, changes are documented, and usage complies with the terms of the Apache 2.0 license.
+This project is licensed under the Apache License 2.0 – you are free to use, modify, and distribute the code, provided that proper attribution is given, changes are documented, and usage complies with the terms of the Apache 2.0 license.
 
 ---
 
@@ -101,3 +118,5 @@ This project is licensed under the [Apache License 2.0](LICENSE) – you are fre
 - **Animals:** Reduced euthanasia, increased chances of adoption.  
 - **Shelters/SPCA staff:** Easier management of adoption requests.  
 - **Adopters:** Simple, accessible way to find pets in need of homes.  
+
+---
